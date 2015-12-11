@@ -1,0 +1,11 @@
+script(src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.min.js')
+script(src='script.js')
+link(rel='stylesheet' href='style.css')
+
+div(ng-app='carousel' ng-init='hover = 1')
+  div hover: {{hover}}
+  .thumbnail-wrapper
+    .thumbnail(ng-repeat='string in images' ng-mouseenter='$parent.hover=$index' style='background-image: url("{{string}}")')
+  div(ng-mouseenter="count = count + 1" ng-init="count=0")
+    p Increment (when mouse enters)
+    p count: {{count}}
