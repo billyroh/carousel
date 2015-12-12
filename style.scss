@@ -4,32 +4,21 @@ $padding: ($maxWidth - $minWidth) / 4;
 
 body {
   background-color: black;
-  color: white;
+  text-align: center;
 }
 
 #preview {
   width: 60em;
   height: 40em;
-  background-image: url('images/photo-0.jpg');
+  background-image: url('https://d1k0cb7ed4to50.cloudfront.net/gaBi3Hzv1gqXD6PGizFPH1DuWl0=/224x160/https://mls-crawler-results-production.s3.amazonaws.com/residential_photos/5288552/20150602201418715983000000-o.jpg');
   background-position: center;
   background-size: cover;
-  margin: 0 auto;
-}
-
-.thumbnail-wrapper {
-  align-items: center;
-  display: flex;
-  justify-content: center;
   margin: 0 auto;
 }
 
 .thumbnail {
+  display: inline-block;
   background-size: cover;
   background-position: center;
-  height: $maxWidth;
-  opacity: 0.6;
-  transition: all 100ms ease-in-out;
-  &:hover {
-    opacity: 1;
-  }
+  margin-right: 1px;
 }
