@@ -1,6 +1,5 @@
 body {
-  background-color: black;
-  color: white; }
+  background-color: white; }
 
 #preview {
   width: 60em;
@@ -9,20 +8,5 @@ body {
   background-position: center;
   background-size: cover;
   margin: 0 auto; }
-
-.thumbnail-wrapper {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  margin: 0 auto; }
-
-.thumbnail {
-  background-size: cover;
-  background-position: center;
-  height: 50px;
-  opacity: 0.6;
-  transition: all 100ms ease-in-out; }
-  .thumbnail:hover {
-    opacity: 1; }
 
 /*# sourceMappingURL=style.css.map */

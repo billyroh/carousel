@@ -3,8 +3,8 @@ $minWidth: $maxWidth / 5;
 $padding: ($maxWidth - $minWidth) / 4;
 
 body {
-  background-color: black;
-  color: white;
+  background-color: white;
+  // color: white;
 }
 
 #preview {
@@ -16,20 +16,20 @@ body {
   margin: 0 auto;
 }
 
-.thumbnail-wrapper {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  margin: 0 auto;
-}
-
-.thumbnail {
-  background-size: cover;
-  background-position: center;
-  height: $maxWidth;
-  opacity: 0.6;
-  transition: all 100ms ease-in-out;
-  &:hover {
-    opacity: 1;
-  }
-}
+// .thumbnail-wrapper {
+//   align-items: center;
+//   display: flex;
+//   justify-content: center;
+//   margin: 0 auto;
+// }
+//
+// .thumbnail {
+//   background-size: cover;
+//   background-position: center;
+//   height: $maxWidth;
+//   opacity: 0.6;
+//   transition: all 100ms ease-in-out;
+//   &:hover {
+//     opacity: 1;
+//   }
+// }
