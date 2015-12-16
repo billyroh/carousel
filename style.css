@@ -9,7 +9,12 @@ body {
   height: 80vh;
   overflow: hidden;
   box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.25);
-  border-radius: 5px; }
+  border-radius: 5px;
+  transition: all 800ms cubic-bezier(0.1, 0.7, 0.1, 1);
+  transform: scale(0.985); }
+  #wrapper:hover {
+    box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.45);
+    transform: scale(1); }
 
 #preview {
   width: 100%;
