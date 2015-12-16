@@ -4,7 +4,7 @@ var width = window.innerWidth - 50,
 
 // Set up fisheye scale
 var scale = d3.fisheye.scale(d3.scale.linear)
-                    .domain([0, dataset.length])
+                    .domain([0, thumbnailSet.length])
                     .range([0, width])
 
 // Set up list
@@ -12,17 +12,17 @@ var list = d3.select('#list')
 
 // Display thumbnails
 var thumbnail = list.selectAll('div')
-  .data(dataset)
+  .data(thumbnailSet)
   .enter()
   .append('div')
     .attr('class', 'thumbnail')
     .style('width', function(d, i) { return scale(i + 1) - scale(i); })
     .style('height', height)
     .style('background-image', function(d) { return 'url(' + d + ')' })
-    .on('mouseover', function(d) {
+    .on('mouseover', function(d, i) {
       d3.select('#preview')
         .style('background-image', function() {
-          return 'url(' + d + ')'
+          return 'url(' + photoSet[i] + ')'
         });
     });
 
