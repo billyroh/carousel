@@ -1,6 +1,8 @@
 // Variables
-var width = window.innerWidth * 0.80,
-    height = 75;
+var widthString = d3.select('#wrapper').style('width'),
+    width = Number(widthString.substring(0, widthString.length - 2)),
+    height = 50.
+    scalingFactor = 2;
 
 // Set up fisheye scale
 var scale = d3.fisheye.scale(d3.scale.linear)
@@ -19,29 +21,44 @@ var thumbnail = list.selectAll('div')
     .style('width', function(d, i) { return scale(i + 1) - scale(i); })
     .style('height', height)
     .style('background-image', function(d) { return 'url(' + d + ')' })
-    .on('mouseover', function(d, i) {
-      d3.select('#preview')
-        .style('background-image', function() {
-          return 'url(' + photoSet[i] + ')'
-        });
+    .on('mousemove', function(d, i) {
+      d3.select('#preview').style('background-image', 'url(' + photoSet[i] +')');
     });
 
-// Scale on mousemove
-list.on('mousemove', function () {
-  var mouse = d3.mouse(this);
-  scale.distortion(2).focus(mouse[0]);
-  thumbnail.call(position)
-})
+// Scale thumbnails
+list.on('mousemove', function() { scaleThumbnailsDesktop(d3.mouse(this)[0]); });
+list.on('touchmove', function() { scaleThumbnailsMobile(d3.touches(this)[0][0]); });
 
-// Redraw and reposition thumbnails
-function position(thumb) {
-  thumb.style('width', function(d , i) { return scale(i + 1) - scale(i); })
+function scaleThumbnailsDesktop(coordinate) {
+  scale.distortion(scalingFactor).focus(coordinate);
+  thumbnail.style('width', function(d , i) {
+    return scale(i + 1) - scale(i);
+  });
 }
 
+function scaleThumbnailsMobile(coordinate) {
+  var previewHasUpdated = false,
+      margin = 1,
+      totalWidth = 0;
+  scale.distortion(scalingFactor).focus(coordinate);
+  thumbnail.style('width', function(d , i) {
+    // Get the thumbnail at the coordinate
+    var currentWidth = scale(i + 1) - scale(i);
+    totalWidth += currentWidth + margin;
+    // Update #preview with the proper image
+    if (totalWidth >= coordinate && !previewHasUpdated) {
+      d3.select('#preview').style('background-image', 'url(' + photoSet[i - 1] +')');
+      previewHasUpdated = true;
+    }
+    return currentWidth;
+  });
+}
+
+// Show and hide list
 function showThumbnails(bool) {
   if (bool === true) {
-    list.attr('class', 'show')
+    list.attr('class', 'show');
   } else {
-    list.attr('class', '')
+    list.attr('class', '');
   }
 }
