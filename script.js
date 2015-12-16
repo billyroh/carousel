@@ -1,5 +1,5 @@
 // Variables
-var width = window.innerWidth - 50,
+var width = window.innerWidth * 0.80,
     height = 75;
 
 // Set up fisheye scale
@@ -29,11 +29,19 @@ var thumbnail = list.selectAll('div')
 // Scale on mousemove
 list.on('mousemove', function () {
   var mouse = d3.mouse(this);
-  scale.distortion(2.5).focus(mouse[0]);
+  scale.distortion(2).focus(mouse[0]);
   thumbnail.call(position)
 })
 
 // Redraw and reposition thumbnails
 function position(thumb) {
   thumb.style('width', function(d , i) { return scale(i + 1) - scale(i); })
+}
+
+function showThumbnails(bool) {
+  if (bool === true) {
+    list.attr('class', 'show')
+  } else {
+    list.attr('class', '')
+  }
 }

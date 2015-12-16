@@ -1,19 +1,37 @@
-$maxWidth: 50px;
-$minWidth: $maxWidth / 5;
-$padding: ($maxWidth - $minWidth) / 4;
+$easing: cubic-bezier(0.1, 0.7, 0.1, 1);
 
 body {
-  background-color: black;
+  background: linear-gradient(to bottom, hsla(0, 100%, 100%, 1) 0%, hsla(206, 30%, 90%, 1) 100%);
   text-align: center;
+  margin: 0;
+}
+
+#wrapper {
+  margin: 10vh auto 0;
+  width: 80vw;
+  height: 80vh;
+  overflow: hidden;
+  box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.25);
+  border-radius: 5px;
 }
 
 #preview {
-  width: 60em;
-  height: 40em;
+  width: 100%;
+  height: 100%;
   background-image: url('https://d1k0cb7ed4to50.cloudfront.net/MPJkRpnF3_nc2beYvK8f8XcsOFw=/1800x1200/https://listing-photos-production.s3.amazonaws.com/uploads/listing-360/61361.jpg');
   background-position: center;
   background-size: cover;
   margin: 0 auto;
+}
+
+#list {
+  background-color: hsla(0, 0, 0, 0.8);
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
+  transition: all 500ms $easing;
+  margin-top: 20px;
+  &.show {
+    margin: -75px;
+  }
 }
 
 .thumbnail {
@@ -21,4 +39,9 @@ body {
   background-size: cover;
   background-position: center;
   margin-right: 1px;
+  transition: all 250ms $easing;
+  opacity: 0.5;
+  &:hover {
+    opacity: 1;
+  }
 }

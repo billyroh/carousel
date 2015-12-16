@@ -1,4 +1,5 @@
 head
+  title Carousel
   script(src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.min.js')
   script(src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.10/d3.js')
   script(src='dataset.js')
@@ -6,7 +7,7 @@ head
   link(rel='stylesheet' href='style.css')
 
 body
-  #wrapper
+  #wrapper(onmouseover='showThumbnails(true)' onmouseout='showThumbnails(false)')
     #preview
     #list
   script(src='script.js')
